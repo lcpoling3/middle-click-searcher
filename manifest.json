@@ -1,6 +1,6 @@
 {
   "manifest_version": 2,
-  "name": "Chrome extension thing",
+  "name": "Middle Click Google Searcher",
   "version": "0.1",
   "content_scripts": [
   	{

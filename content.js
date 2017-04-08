@@ -1,13 +1,16 @@
 //content.js
 
+$('body').mousedown(function(e){if(e.button==2)return false});
 
-chrome.runtime.onMessage.addListener(
-	function(req, sender, sendResponse){
-		if (req.message === "clicked_browser_action"){
-			var firstHref = $("a[href^='http']").eq(0).attr("href");
-			console.log(firstHref);
-			
-			chrome.runtime.sendMessage({"message": "open_new_tab", "url": firstHref});
+$(document).mousedown(function(e){
+
+	if (e.button == 1){
+		e.preventDefault();
+		var text = window.getSelection().toString();
+		if (text != null && text.length > 0){
+			console.log(text);
+			chrome.runtime.sendMessage({"message": "google_search", "to_search": text});
 		}
 	}
-);
+	
+})
